@@ -17,6 +17,8 @@ Here you can see an example:
         
 
 In the test package you can see more examples.
+
+This version is compiled for Java 1.6
         
 
 Enjoy!!
