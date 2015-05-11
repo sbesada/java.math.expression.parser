@@ -1,9 +1,9 @@
 # java.math.expression.parser
-java.math.expression.parser is a maven project that let you parse math expresions.
+java.math.expression.parser is a maven project that let you parse math expressions.
 
 This algorithm does not use a decision tree. It is a recursive algorithm.
 
-This algorithm is faster than JEP math expresion parser!!!
+This algorithm is faster than JEP math expresion parser!!! If you compare java.math.expression.parse and JEP, this algorithm only need 25% of the time to parse the same expression as JEP.
 
 Here you can see an example:
 
@@ -21,4 +21,4 @@ In the test package you can see more examples.
 This version is compiled for Java 1.6
         
 
-Enjoy!!
+Enjoy it!!
