@@ -5,8 +5,11 @@ import java.util.Arrays;
 import java.util.List;
 
 import com.expression.parser.exception.CalculatorException;
+import com.expression.parser.function.Complex;
+import com.expression.parser.function.ComplexFunction;
 import com.expression.parser.function.FunctionX;
 import com.expression.parser.function.FunctionXs;
+import com.expression.parser.util.ParserResult;
 import com.expression.parser.util.Point;
 
 /**
@@ -17,15 +20,33 @@ import com.expression.parser.util.Point;
  */
 public class Parser {
 
-    public static double Eval(final String function) {
+    /**
+     * 
+     * Eval
+     * 
+     * @param function
+     * @return
+     */
+    public static ParserResult eval(final String function) {
 
-        double result = 0;
+        ParserResult result = new ParserResult();
         FunctionX f_x = null;
+        final ComplexFunction complexFunction = null;
 
         if ((function != null) && !function.equals("")) {
             try {
-                f_x = new FunctionX(function);
-                result = f_x.getF_xo(0);
+
+                if ((function.toLowerCase().contains("j") || function.toLowerCase().contains("i"))
+                        && !function.toLowerCase().contains("x")) {
+                    // TODO:this if can be more accurate
+                    result = eval(function, new Point("x", new Complex(1, 0)));
+                } else if (!function.toLowerCase().contains("x")) {
+                    f_x = new FunctionX(function);
+                    result.setValue(f_x.getF_xo(0));
+
+                } else {
+                    throw new CalculatorException("function is not well defined");
+                }
 
             } catch (final CalculatorException e) {
                 // TODO Auto-generated catch block
@@ -46,7 +67,7 @@ public class Parser {
      * @param values
      * @return
      */
-    public static double Eval(final String function, final String[] vars, final Double[] values) {
+    public static double eval(final String function, final String[] vars, final Double[] values) {
 
         double result = 0;
         FunctionX f_x = null;
@@ -84,35 +105,53 @@ public class Parser {
      * @param values
      * @return
      */
-    public static double Eval(final String function, final Point... values) {
+    public static ParserResult eval(final String function, final Point... values) {
 
-        double result = 0;
+        final ParserResult result = new ParserResult();
         FunctionX f_x = null;
         FunctionXs f_xs = null;
+        ComplexFunction complexFunction = null;
 
         if ((function != null) && !function.equals("")) {
-            try {
 
-                if (values != null) {
-                    if (values.length == 1) {
-                        f_x = new FunctionX(function);
-                        result = f_x.getF_xo(values[0].getValue());
-                    } else if (values.length > 1) {
-                        f_xs = new FunctionXs(function);
-                        final List<Double> valuesList = PointToValue(values);
-                        final List<String> varsList = PointToVar(values);
-                        result = f_xs.getValue(valuesList, varsList);
-                    }
+            if (function.toLowerCase().contains("i") || function.toLowerCase().contains("j") || pointIsComplex(values)) { // Complex
+                // TODO:this if can be more accurate
 
-                } else {
-                    f_x = new FunctionX(function);
-                    result = f_x.getF_xo(0);
+                complexFunction = new ComplexFunction(function);
+                final List<Complex> valuesList = pointToComplexValue(values);
+                final List<String> varsList = pointToVar(values);
+                try {
+                    result.setComplexValue(complexFunction.getValue(valuesList, varsList));
+                } catch (final CalculatorException e) {
+                    // TODO Auto-generated catch block
+                    e.printStackTrace();
                 }
-            }
 
-            catch (final CalculatorException e) {
-                // TODO Auto-generated catch block
-                e.printStackTrace();
+            } else {
+
+                try {
+
+                    if (values != null) {
+                        if (values.length == 1) {
+                            f_x = new FunctionX(function);
+                            result.setValue(f_x.getF_xo(values[0].getValue()));
+                        } else if (values.length > 1) {
+                            f_xs = new FunctionXs(function);
+                            final List<Double> valuesList = pointToValue(values);
+                            final List<String> varsList = pointToVar(values);
+                            result.setValue(f_xs.getValue(valuesList, varsList));
+                        }
+
+                    } else {
+                        f_x = new FunctionX(function);
+                        result.setValue(f_x.getF_xo(0));
+                    }
+                }
+
+                catch (final CalculatorException e) {
+                    // TODO Auto-generated catch block
+                    e.printStackTrace();
+                }
             }
         }
         return result;
@@ -125,10 +164,49 @@ public class Parser {
      * @param values
      * @return
      */
-    private static List<Double> PointToValue(final Point... values) {
+    private static List<Double> pointToValue(final Point... values) {
         final List<Double> result = new ArrayList<Double>();
         for (int i = 0; i < values.length; i++) {
             result.add(values[i].getValue());
+        }
+        return result;
+    }
+
+    /**
+     * 
+     * PointToComplexValue
+     * 
+     * @param values
+     * @return
+     */
+    private static List<Complex> pointToComplexValue(final Point... values) {
+        final List<Complex> result = new ArrayList<Complex>();
+        for (int i = 0; i < values.length; i++) {
+            if (values[i].isComplex()) {
+                result.add(values[i].getComplexValue());
+            } else {
+                result.add(new Complex(values[i].getValue(), 0));
+            }
+
+        }
+        return result;
+    }
+
+    /**
+     * 
+     * pointIsComplex
+     * 
+     * @param values
+     * @return
+     */
+    private static boolean pointIsComplex(final Point... values) {
+
+        boolean result = false;
+        for (int i = 0; i < values.length; i++) {
+            if (values[i].isComplex()) {
+                result = true;
+                break;
+            }
         }
         return result;
     }
@@ -140,7 +218,7 @@ public class Parser {
      * @param values
      * @return
      */
-    private static List<String> PointToVar(final Point... values) {
+    private static List<String> pointToVar(final Point... values) {
         final List<String> result = new ArrayList<String>();
         for (int i = 0; i < values.length; i++) {
             result.add(values[i].getVar());
