@@ -1,5 +1,5 @@
 # java.math.expression.parser
-java.math.expression.parser is a maven project that let you parse math expressions.
+java math expression parser is a maven project that let you parse math expressions.
 
 This algorithm does not use a decision tree. It is a recursive algorithm.
 
@@ -17,6 +17,14 @@ Here you can see an example:
         
 
 In the test package you can see more examples.
+
+The last version supports complex expressions. Here an example:
+
+        String f_x = " e^(1*x*acos((3/2-2i)^(pi)))";
+        
+        Point xo = new Point("x", new Complex(1, 2));
+        ParserResult result = Parser.eval(f_x, xo);
+     
 
 This version is compiled for Java 1.6
         
