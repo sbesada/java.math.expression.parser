@@ -3,8 +3,20 @@ java math expression parser is a maven project that let you parse math expressio
 
 This algorithm does not use a decision tree. It is a recursive algorithm.
 
-This algorithm is faster than JEP math expresion parser!!! If you compare java.math.expression.parse and JEP, this algorithm only need 25% of the time to parse the same expression as JEP.
+This algorithm is faster than JEP math expresion parser!!! If you compare java.math.expression.parse and JEP, this algorithm only need 25% of the time to parse the same expression as JEP. With other algorithms that use trees like:
 
+                                                                                       ---------
+                                                                                       |   +   |
+                                                                                       ---------
+                                                                                           |
+                                                                                    ---------------
+                                                                                    |             |
+                                                                                ---------     ---------
+                                                                                |   1   |     |   *   |
+                                                                                ---------     ---------
+                                                                                
+ It is even faster than them. This library is 10 times faster and it is tested using matlab. This library in python has 1600 downloads in the first 3 months.                                                        
+                                    
 Here you can see an example:
 
 
@@ -15,6 +27,8 @@ Here you can see an example:
 
         double result = Parser.Eval(f_xs, xo, zo);
         
+        final double result1 = Parser.eval("6.5*7.8^2.3 + (3.5^3+7/2)^3 -(5*4/(2-3))*4", null, null);
+ 
 
 In the test package you can see more examples.
 
