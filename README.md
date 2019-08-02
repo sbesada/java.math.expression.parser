@@ -3,7 +3,7 @@ java math expression parser is a maven project that let you parse math expressio
 
 This algorithm does not use a decision tree. It is a recursive algorithm.
 
-This algorithm is faster than JEP math expresion parser!!! If you compare java.math.expression.parse and JEP, this algorithm only need 25% of the time to parse the same expression as JEP. With other algorithms that use trees like:
+This algorithm is faster than JEP math expresion parser!!! If you compare java.math.expression.parse and JEP, this algorithm only needs 25% of the time to parse the same expression as JEP. With other algorithms that use trees like:
 
                                                                                        ---------
                                                                                        |   +   |
