@@ -17,7 +17,8 @@ This algorithm is faster than JEP math expresion parser!!! If you compare java.m
                                                                                 
  It is even faster than them. This library is 10 times faster and it is tested using matlab. The python version of this library is: 
                                     https://pypi.org/project/pymep/
-Here you can see an example:
+                                    
+Examples:
 
 
         String f_xs = " 2*(-(((z*3)*sqrt(x^(2)))+3))";
