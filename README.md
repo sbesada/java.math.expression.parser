@@ -47,4 +47,4 @@ This version is compiled for Java 1.6
 
 Enjoy it!!
 
-PD: If you think that my work deserves a donation you can do it: https://sbesada.github.io/
+PD: If you think that my work deserves a donation, you can do it: https://sbesada.github.io/
