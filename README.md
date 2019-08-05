@@ -28,7 +28,8 @@ Examples:
 
         double result = Parser.Eval(f_xs, xo, zo);
         
-        final double result1 = Parser.eval("6.5*7.8^2.3 + (3.5^3+7/2)^3 -(5*4/(2-3))*4", null, null); --> execution time = 4ms in i7-6500U
+        final double result1 = Parser.eval("6.5*7.8^2.3 + (3.5^3+7/2)^3 -(5*4/(2-3))*4", null, null); 
+        --> execution time = 4ms in i7-6500U
  
 
 In the test package you can see more examples.
