@@ -20,21 +20,31 @@ This algorithm is faster than JEP math expresion parser!!! If you compare java.m
                                     
 Examples:
 
+        String f_x = "+3 +5*5*(+1)";
 
-        String f_xs = " 2*(-(((z*3)*sqrt(x^(2)))+3))";
-        
+        ParserResult result = Parser.eval(f_x);
+        assertTrue(result.getValue() == 28.0);
+
+        final Point xo = new Point("x", new Double(2));
+        f_x = "2.35*e^(-3)*x";
+
+        result = Parser.eval(f_x, xo);
+        assertTrue(result.getValue() == 0.2339992213289606);
+
+
         final Point xo = new Point("x", new Double(2));
         final Point zo = new Point("z", new Double(1));
-
-        double result = Parser.Eval(f_xs, xo, zo);
+        String f_xs = " 2*(-(((z*3)*sqrt(x^(2)))+3))";        
         
-        final double result1 = Parser.eval("6.5*7.8^2.3 + (3.5^3+7/2)^3 -(5*4/(2-3))*4", null, null); 
+        Parser.Eval(f_xs, xo, zo);
+        
+        final double result = Parser.eval("6.5*7.8^2.3 + (3.5^3+7/2)^3 -(5*4/(2-3))*4", null, null); 
         --> execution time = 4ms in i7-6500U
  
 
-In the test package you can see more examples.
+In the test package you can see more examples with diferent constructors 
 
-The last version supports complex expressions. Here an example:
+The last version supports expressions with complex numbers and multiple vars. Here an example:
 
         String f_x = " e^(1*x*acos((3/2-2i)^(pi)))";
         
