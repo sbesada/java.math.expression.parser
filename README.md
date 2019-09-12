@@ -39,10 +39,10 @@ Examples:
         Parser.Eval(f_xs, xo, zo);
         
         String f_xs = "x+5*y+(3 -y)";
-		    final Point xo = new Point("x", "1+1");
-		    final Point yo = new Point("y", "0+2*0+1*5-5 +1^4"); //math expression in vars
+        final Point xo = new Point("x", "1+1");
+        final Point yo = new Point("y", "0+2*0+1*5-5 +1^4"); //math expression in vars
 
-		    ParserResult result = Parser.eval(f_xs, xo, yo);
+        ParserResult result = Parser.eval(f_xs, xo, yo);
 		
         
         
@@ -60,9 +60,9 @@ The last version supports expressions with complex numbers and multiple vars. He
         ParserResult result = Parser.eval(f_x, xo);
         
         String f_x = "1+j +x";
-		    final Point xo = new Point("x", "2 +j"); //complex math expression in vars
+        final Point xo = new Point("x", "2 +j"); //complex math expression in vars
 
-		    ParserResult result = Parser.eval(f_x, xo);
+        ParserResult result = Parser.eval(f_x, xo);
      
 
 This version is compiled for Java 1.6
