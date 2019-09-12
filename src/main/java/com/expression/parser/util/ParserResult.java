@@ -2,38 +2,74 @@ package com.expression.parser.util;
 
 import com.expression.parser.function.Complex;
 
+/**
+ * The Class ParserResult.
+ */
 public class ParserResult {
 
-    private Double value;
+	/** The value. */
+	private Double value;
 
-    private Complex complexValue;
+	/** The complex value. */
+	private Complex complexValue;
 
-    private boolean complex;
+	/** The complex. */
+	private boolean complex;
 
-    public Double getValue() {
-        return this.value;
-    }
+	/**
+	 * Gets the value.
+	 *
+	 * @return the value
+	 */
+	public Double getValue() {
+		return value;
+	}
 
-    public void setValue(final Double value) {
-        this.value = value;
-        this.complex = false;
-    }
+	/**
+	 * Sets the value.
+	 *
+	 * @param value the new value
+	 */
+	public void setValue(final Double value) {
+		this.value = value;
+		complex = false;
+	}
 
-    public Complex getComplexValue() {
-        return this.complexValue;
-    }
+	/**
+	 * Gets the complex value.
+	 *
+	 * @return the complex value
+	 */
+	public Complex getComplexValue() {
+		return complexValue;
+	}
 
-    public void setComplexValue(final Complex complexValue) {
-        this.complexValue = complexValue;
-        this.complex = true;
-    }
+	/**
+	 * Sets the complex value.
+	 *
+	 * @param complexValue the new complex value
+	 */
+	public void setComplexValue(final Complex complexValue) {
+		this.complexValue = complexValue;
+		complex = true;
+	}
 
-    public boolean isComplex() {
-        return this.complex;
-    }
+	/**
+	 * Checks if is complex.
+	 *
+	 * @return true, if is complex
+	 */
+	public boolean isComplex() {
+		return complex;
+	}
 
-    public void setComplex(final boolean complex) {
-        this.complex = complex;
-    }
+	/**
+	 * Sets the complex.
+	 *
+	 * @param complex the new complex
+	 */
+	public void setComplex(final boolean complex) {
+		this.complex = complex;
+	}
 
 }

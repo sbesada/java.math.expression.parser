@@ -3,115 +3,156 @@ package com.expression.parser.util;
 import com.expression.parser.function.Complex;
 
 /**
- * 
- * 
- * @author Sergio Besada
- * 
+ * The Class Point.
  */
 public class Point {
 
-    private String var;
+	/** The var. */
+	private String var;
 
-    private Double value;
+	/** The value. */
+	private Double value;
 
-    private Complex complexValue;
+	/** The complex value. */
+	private Complex complexValue;
 
-    private boolean complex;
+	/** The string value. */
+	private String stringValue;
 
-    public Point() {
+	/** The complex. */
+	private boolean complex;
 
-    }
+	/**
+	 * Instantiates a new point.
+	 */
+	public Point() {
 
-    public Point(final String var, final Double value) {
-        this.var = var;
-        this.value = value;
-        this.complex = false;
-    }
+	}
 
-    public Point(final String var, final Complex value) {
-        this.var = var;
-        this.complexValue = value;
-        this.complex = true;
-    }
+	/**
+	 * Instantiates a new point.
+	 *
+	 * @param var the var
+	 * @param value the value
+	 */
+	public Point(final String var, final Double value) {
+		this.var = var;
+		this.value = value;
+		complex = false;
+	}
 
-    /**
-     * getter var
-     * 
-     * 
-     * @return
-     */
-    public String getVar() {
-        return this.var;
-    }
+	/**
+	 * Instantiates a new point.
+	 *
+	 * @param var the var
+	 * @param value the value
+	 */
+	public Point(final String var, final Complex value) {
+		this.var = var;
+		complexValue = value;
+		complex = true;
+	}
 
-    /**
-     * 
-     * setter var
-     * 
-     * @param var
-     */
-    public void setVar(final String var) {
-        this.var = var;
-    }
+	/**
+	 * Instantiates a new point.
+	 *
+	 * @param var the var
+	 * @param value the value
+	 */
+	public Point(final String var, final String value) {
+		this.var = var;
+		stringValue = value;
 
-    /**
-     * 
-     * getter Value
-     * 
-     * @return
-     */
-    public Double getValue() {
-        return this.value;
-    }
+	}
 
-    /**
-     * 
-     * setter Value
-     * 
-     * @param value
-     */
-    public void setValue(final Double value) {
-        this.value = value;
-    }
+	/**
+	 * getter var.
+	 *
+	 * @return the var
+	 */
+	public String getVar() {
+		return var;
+	}
 
-    /**
-     * 
-     * getter complexValue
-     * 
-     * @return
-     */
-    public Complex getComplexValue() {
-        return this.complexValue;
-    }
+	/**
+	 * setter var.
+	 *
+	 * @param var the new var
+	 */
+	public void setVar(final String var) {
+		this.var = var;
+	}
 
-    /**
-     * 
-     * setter complexValue
-     * 
-     * @param complexValue
-     */
-    public void setComplexValue(final Complex complexValue) {
-        this.complexValue = complexValue;
-    }
+	/**
+	 * getter Value.
+	 *
+	 * @return the value
+	 */
+	public Double getValue() {
+		return value;
+	}
 
-    /**
-     * 
-     * isComplex
-     * 
-     * @return
-     */
-    public boolean isComplex() {
-        return this.complex;
-    }
+	/**
+	 * setter Value.
+	 *
+	 * @param value the new value
+	 */
+	public void setValue(final Double value) {
+		this.value = value;
+	}
 
-    /**
-     * 
-     * setter complex
-     * 
-     * @param complex
-     */
-    public void setComplex(final boolean complex) {
-        this.complex = complex;
-    }
+	/**
+	 * getter complexValue.
+	 *
+	 * @return the complex value
+	 */
+	public Complex getComplexValue() {
+		return complexValue;
+	}
+
+	/**
+	 * setter complexValue.
+	 *
+	 * @param complexValue the new complex value
+	 */
+	public void setComplexValue(final Complex complexValue) {
+		this.complexValue = complexValue;
+	}
+
+	/**
+	 * isComplex.
+	 *
+	 * @return true, if is complex
+	 */
+	public boolean isComplex() {
+		return complex;
+	}
+
+	/**
+	 * setter complex.
+	 *
+	 * @param complex the new complex
+	 */
+	public void setComplex(final boolean complex) {
+		this.complex = complex;
+	}
+
+	/**
+	 * Gets the string value.
+	 *
+	 * @return the string value
+	 */
+	public String getStringValue() {
+		return stringValue;
+	}
+
+	/**
+	 * Sets the string value.
+	 *
+	 * @param stringValue the new string value
+	 */
+	public void setStringValue(final String stringValue) {
+		this.stringValue = stringValue;
+	}
 
 }

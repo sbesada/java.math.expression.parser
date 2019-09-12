@@ -1,54 +1,53 @@
 package com.expression.parser;
 
 /**
- * 
- * 
- * @author Sergio Besada
- * 
+ * The Class ParserManager.
  */
 public class ParserManager {
 
-    private boolean deegre = false;
+	/** The deegre. */
+	private boolean deegre = false;
 
-    // ..... Other configuration values //
+	// ..... Other configuration values //
 
-    private static ParserManager instance = null;
+	/** The instance. */
+	private static ParserManager instance = null;
 
-    protected ParserManager() {
+	/**
+	 * Instantiates a new parser manager.
+	 */
+	protected ParserManager() {
 
-    }
+	}
 
-    /**
-     * 
-     * getInstance
-     * 
-     * @return
-     */
-    public static ParserManager getInstance() {
-        if (instance == null) {
-            instance = new ParserManager();
-        }
-        return instance;
-    }
+	/**
+	 * getInstance.
+	 *
+	 * @return single instance of ParserManager
+	 */
+	public static ParserManager getInstance() {
+		if (instance == null) {
+			instance = new ParserManager();
+		}
+		return instance;
+	}
 
-    /**
-     * 
-     * isDeegre
-     * 
-     * @return
-     */
-    public boolean isDeegre() {
-        return this.deegre;
-    }
+	/**
+	 * isDeegre.
+	 *
+	 * @return true, if is deegre
+	 */
+	public boolean isDeegre() {
+		return deegre;
+	}
 
-    /**
-     * 
-     * setDeegre
-     * 
-     * @param deegre
-     */
-    public void setDeegre(final boolean deegre) {
-        this.deegre = deegre;
-    }
+	/**
+	 * setDeegre.
+	 *
+	 * @param deegre the new deegre
+	 */
+	public void setDeegre(final boolean deegre) {
+		this.deegre = deegre;
+	}
 
 }

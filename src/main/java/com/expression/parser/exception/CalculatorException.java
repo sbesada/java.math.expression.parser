@@ -1,26 +1,25 @@
 package com.expression.parser.exception;
 
 /**
- * 
- * 
- * @author Sergio Besada
- * 
+ * The Class CalculatorException.
  */
 public class CalculatorException extends Exception {
 
-    /**
-     * CalculatorException
-     */
-    public CalculatorException() {
-        super();
-    }
+	private static final long serialVersionUID = 6235428117353457356L;
 
-    /**
-     * CalculatorException
-     * 
-     * @param message
-     */
-    public CalculatorException(final String message) {
-        super(message);
-    }
+	/**
+	 * CalculatorException.
+	 */
+	public CalculatorException() {
+		super();
+	}
+
+	/**
+	 * CalculatorException.
+	 *
+	 * @param message the message
+	 */
+	public CalculatorException(final String message) {
+		super(message);
+	}
 }
