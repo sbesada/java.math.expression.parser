@@ -38,6 +38,14 @@ Examples:
         
         Parser.Eval(f_xs, xo, zo);
         
+        String f_xs = "x+5*y+(3 -y)";
+		    final Point xo = new Point("x", "1+1");
+		    final Point yo = new Point("y", "0+2*0+1*5-5 +1^4"); //math expression in vars
+
+		    ParserResult result = Parser.eval(f_xs, xo, yo);
+		
+        
+        
         final double result = Parser.eval("6.5*7.8^2.3 + (3.5^3+7/2)^3 -(5*4/(2-3))*4", null, null); 
         --> execution time = 4ms in i7-6500U
  
@@ -46,10 +54,15 @@ In the test package you can see more examples with diferent constructors
 
 The last version supports expressions with complex numbers and multiple vars. Here an example:
 
-        String f_x = " e^(1*x*acos((3/2-2i)^(pi)))";
+        String f_x = " e^(1*x*acos((3/2-2j)^(pi)))";
         
         Point xo = new Point("x", new Complex(1, 2));
         ParserResult result = Parser.eval(f_x, xo);
+        
+        String f_x = "1+j +x";
+		    final Point xo = new Point("x", "2 +j"); //complex math expression in vars
+
+		    ParserResult result = Parser.eval(f_x, xo);
      
 
 This version is compiled for Java 1.6
