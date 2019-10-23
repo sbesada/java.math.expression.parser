@@ -1,5 +1,5 @@
 # java.math.expression.parser
-java math expression parser is a maven project that let you parse math expressions.
+java math expression parser is a maven project that let you parse or evaluate math expressions.
 
 This algorithm does not use a decision tree. It is a recursive algorithm.
 
@@ -50,7 +50,7 @@ Examples:
         --> execution time = 4ms in i7-6500U
  
 
-In the test package you can see more examples with diferent constructors 
+In the test package you can see more examples with different constructors 
 
 The last version supports expressions with complex numbers and multiple vars. Here an example:
 
@@ -66,6 +66,8 @@ The last version supports expressions with complex numbers and multiple vars. He
      
 
 This version is compiled for Java 1.6
+
+Also, you can visit https://github.com/sbesada/java.math.numerical.library that uses this library.
         
 
 Enjoy it!!
