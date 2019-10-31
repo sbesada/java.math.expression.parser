@@ -15,7 +15,7 @@ This algorithm is faster than JEP math expresion parser!!! If you compare java.m
                                                                                 |   1   |     |   *   |
                                                                                 ---------     ---------
                                                                                 
- It is even faster than them. This library is 10 times faster and it is tested using matlab. The python version of this library is pymep.You can find pymep in my github repository.
+ It is even faster than them. This library is 10 times faster and it is tested using matlab. The python version of this library is pymep. You can find pymep in my github repository.
                                     
 Examples:
 
