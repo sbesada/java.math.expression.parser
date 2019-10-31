@@ -1,7 +1,7 @@
 # java.math.expression.parser
 java math expression parser is a maven project that let you parse or evaluate math expressions.
 
-This algorithm does not use a decision tree. It is a recursive algorithm.
+This algorithm does not use a decision tree. It is a kind of Recursive ascent parser (https://en.wikipedia.org/wiki/Recursive_ascent_parser). In fact, it is LR parser (Left-Right Parser) without backtracking.
 
 This algorithm is faster than JEP math expresion parser!!! If you compare java.math.expression.parse and JEP, this algorithm only needs 25% of the time to parse the same expression as JEP. With other algorithms that use trees like:
 
@@ -15,8 +15,7 @@ This algorithm is faster than JEP math expresion parser!!! If you compare java.m
                                                                                 |   1   |     |   *   |
                                                                                 ---------     ---------
                                                                                 
- It is even faster than them. This library is 10 times faster and it is tested using matlab. The python version of this library is: 
-                                    https://pypi.org/project/pymep/
+ It is even faster than them. This library is 10 times faster and it is tested using matlab. The python version of this library is pymep.You can find pymep in my github repository.
                                     
 Examples:
 
