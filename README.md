@@ -66,7 +66,7 @@ The last version supports expressions with complex numbers and multiple vars. He
 
 This version is compiled for Java 1.6
 
-If you are interested in maths, you can visit my java numerical library in my github repository which uses java.math.expression.parser to evaluate expressions.
+If you are interested in maths, you can visit my java numerical library in my github repository which uses java.math.expression.parser to evaluate functions.
         
 
 Enjoy it!!
