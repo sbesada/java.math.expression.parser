@@ -71,9 +71,6 @@ This algorithm is faster than JEP math expresion parser!!! If you compare java.m
 
         ParserResult result = Parser.eval(f_xs, xo, yo);
 		
-        
-### Fast execution
-
         final double result = Parser.eval("6.5*7.8^2.3 + (3.5^3+7/2)^3 -(5*4/(2-3))*4", null, null); 
         --> execution time = 4ms in i7-6500U
  
