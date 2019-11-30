@@ -42,8 +42,10 @@ This algorithm is faster than JEP math expresion parser!!! If you compare java.m
  
                                     
 ## Examples:
+ 
+ In the test package you can see more examples with different constructors 
 
-## Real numbers
+### Real numbers
 
         String f_x = "+3 +5*5*(+1)";
 
@@ -70,17 +72,14 @@ This algorithm is faster than JEP math expresion parser!!! If you compare java.m
         ParserResult result = Parser.eval(f_xs, xo, yo);
 		
         
-## fast execution
+### Fast execution
 
         final double result = Parser.eval("6.5*7.8^2.3 + (3.5^3+7/2)^3 -(5*4/(2-3))*4", null, null); 
         --> execution time = 4ms in i7-6500U
  
-
-- In the test package you can see more examples with different constructors 
-
 ### Complex numbers
 
-- The last version supports expressions with complex numbers and multiple vars. Here an example:
+The last version supports expressions with complex numbers and multiple vars. Here an example:
 
         String f_x = " e^(1*x*acos((3/2-2j)^(pi)))";
         
