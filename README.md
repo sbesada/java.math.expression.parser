@@ -31,6 +31,15 @@ This algorithm is faster than JEP math expresion parser!!! If you compare java.m
 ### parentheses 
 
  - (...)
+ 
+ ### variables: 
+ 
+ - Expressions in vars
+ 
+    String f_xs = "x+5*y+(3 -y)";
+    final Point xo = new Point("x", "1+1");
+    final Point yo = new Point("y", "0+2*0+1*5-5 +1^4")
+ 
                                     
 ## Examples:
 
