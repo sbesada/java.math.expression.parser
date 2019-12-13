@@ -1,5 +1,5 @@
 # java.math.expression.parser
-java math expression parser is a maven project that let you parse or evaluate math expressions.
+java math expression parser is a maven project that lets you parse or evaluate math expressions.
 
 This algorithm does not use a decision tree. It is a kind of Recursive Ascent Parser (https://en.wikipedia.org/wiki/Recursive_ascent_parser). In fact, it is LR parser (Left-Right Parser) without backtracking.
 
