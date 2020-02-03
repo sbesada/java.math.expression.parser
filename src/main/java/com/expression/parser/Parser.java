@@ -17,15 +17,16 @@ import com.expression.parser.util.Point;
  */
 public class Parser {
 
-	
 	/**
 	 * Eval
-	 * 
-	 * This a parser eval. The real parser of a function is within the Fuction 
 	 *
-     * FunctionX: functions with one var. Example 1+2*x	--> it is more optimized
+	 * This a parser eval. The real parser of a function is within the Fuction
+	 *
+	 * FunctionX: functions with one var. Example 1+2*x --> it is more optimized
+	 *
 	 * FunctionXs: functions with several vars. Example: 1+2*x+3*y...
-	 * ComplexFunction: Complex functions with several vars: one var or n vars. Example --> 1+x+y +j
+	 *
+	 * ComplexFunction: Complex functions with several vars: one var or n vars. Example: 1+x+y +j
 	 *
 	 * @param function the function: 1+2*x+j...
 	 * @param values the values x=10, y=20
@@ -42,7 +43,6 @@ public class Parser {
 		if ((function != null) && !function.isEmpty()) {
 
 			if (Parser.pointIsComplex(values) || function.toLowerCase().contains("j")) { // Complex
-			
 
 				complexFunction = new ComplexFunction(function);
 				final List<Complex> valuesList = pointToComplexValue(values);
@@ -93,7 +93,6 @@ public class Parser {
 		return result;
 	}
 
-
 	/**
 	 * Eval.
 	 *
@@ -132,8 +131,7 @@ public class Parser {
 
 	}
 
-
-    /**
+	/**
 	 * Eval.
 	 *
 	 * @param function the function
@@ -149,7 +147,7 @@ public class Parser {
 
 				if ((function.toLowerCase().contains("j") || function.toLowerCase().contains("i"))
 						&& !function.toLowerCase().contains("x")) {
-					
+
 					result = eval(function, new Point("x", new Complex(1, 0)));
 				} else if (!function.toLowerCase().contains("x")) {
 					f_x = new FunctionX(function);
@@ -168,8 +166,7 @@ public class Parser {
 		return result;
 
 	}
-	
-	
+
 	/**
 	 * PointToValue.
 	 *
