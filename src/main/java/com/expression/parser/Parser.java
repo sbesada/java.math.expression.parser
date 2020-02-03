@@ -17,86 +17,20 @@ import com.expression.parser.util.Point;
  */
 public class Parser {
 
+	
 	/**
-	 * Eval.
+	 * Eval
+	 * 
+	 * This a parser eval. The real parser of a function is within the Fuction 
 	 *
-	 * @param function the function
-	 * @return the parser result
-	 */
-	public static ParserResult eval(final String function) {
-
-		ParserResult result = new ParserResult();
-		FunctionX f_x = null;
-
-		if ((function != null) && !function.equals("")) {
-			try {
-
-				if ((function.toLowerCase().contains("j") || function.toLowerCase().contains("i"))
-						&& !function.toLowerCase().contains("x")) {
-					// TODO:this if can be more accurate
-					result = eval(function, new Point("x", new Complex(1, 0)));
-				} else if (!function.toLowerCase().contains("x")) {
-					f_x = new FunctionX(function);
-					result.setValue(f_x.getF_xo(0));
-
-				} else {
-					throw new CalculatorException("function is not well defined");
-				}
-
-			} catch (final CalculatorException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		}
-
-		return result;
-
-	}
-
-	/**
-	 * Eval.
+     * FunctionX: functions with one var. Example 1+2*x	--> it is more optimized
+	 * FunctionXs: functions with several vars. Example: 1+2*x+3*y...
+	 * ComplexFunction: Complex functions with several vars: one var or n vars. Example --> 1+x+y +j
 	 *
-	 * @param function the function
-	 * @param vars the vars
-	 * @param values the values
-	 * @return the double
-	 */
-	public static double eval(final String function, final String[] vars, final Double[] values) {
-
-		double result = 0;
-		FunctionX f_x = null;
-		FunctionXs f_xs = null;
-		if ((function != null) && !function.equals("")) {
-			try {
-				if ((((vars == null) || (vars.length < 1)) && (values == null)) || (values.length < 1)) {
-					f_x = new FunctionX(function);
-					result = f_x.getF_xo(0);
-				} else if ((values != null) && (values.length == 1)) {
-					f_x = new FunctionX(function);
-					result = f_x.getF_xo(values[0]);
-				} else if ((vars != null) && (vars.length > 1) && (values != null) && (values.length > 1)) {
-					f_xs = new FunctionXs(function);
-					final List<Double> valuesList = Arrays.asList(values);
-					final List<String> varsList = Arrays.asList(vars);
-					result = f_xs.getValue(valuesList, varsList);
-				}
-
-			} catch (final CalculatorException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		}
-
-		return result;
-
-	}
-
-	/**
-	 * Eval.
+	 * @param function the function: 1+2*x+j...
+	 * @param values the values x=10, y=20
 	 *
-	 * @param function the function
-	 * @param values the values
-	 * @return the parser result
+	 * @return the parser result: complex or real value
 	 */
 	public static ParserResult eval(final String function, final Point... values) {
 
@@ -108,7 +42,7 @@ public class Parser {
 		if ((function != null) && !function.isEmpty()) {
 
 			if (Parser.pointIsComplex(values) || function.toLowerCase().contains("j")) { // Complex
-				// TODO:this if can be more accurate
+			
 
 				complexFunction = new ComplexFunction(function);
 				final List<Complex> valuesList = pointToComplexValue(values);
@@ -159,6 +93,83 @@ public class Parser {
 		return result;
 	}
 
+
+	/**
+	 * Eval.
+	 *
+	 * @param function the function
+	 * @param vars the vars
+	 * @param values the values
+	 * @return the double
+	 */
+	public static double eval(final String function, final String[] vars, final Double[] values) {
+
+		double result = 0;
+		FunctionX f_x = null;
+		FunctionXs f_xs = null;
+		if ((function != null) && !function.equals("")) {
+			try {
+				if ((((vars == null) || (vars.length < 1)) && (values == null)) || (values.length < 1)) {
+					f_x = new FunctionX(function);
+					result = f_x.getF_xo(0);
+				} else if ((values != null) && (values.length == 1)) {
+					f_x = new FunctionX(function);
+					result = f_x.getF_xo(values[0]);
+				} else if ((vars != null) && (vars.length > 1) && (values != null) && (values.length > 1)) {
+					f_xs = new FunctionXs(function);
+					final List<Double> valuesList = Arrays.asList(values);
+					final List<String> varsList = Arrays.asList(vars);
+					result = f_xs.getValue(valuesList, varsList);
+				}
+
+			} catch (final CalculatorException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+
+		return result;
+
+	}
+
+
+    /**
+	 * Eval.
+	 *
+	 * @param function the function
+	 * @return the parser result
+	 */
+	public static ParserResult eval(final String function) {
+
+		ParserResult result = new ParserResult();
+		FunctionX f_x = null;
+
+		if ((function != null) && !function.equals("")) {
+			try {
+
+				if ((function.toLowerCase().contains("j") || function.toLowerCase().contains("i"))
+						&& !function.toLowerCase().contains("x")) {
+					
+					result = eval(function, new Point("x", new Complex(1, 0)));
+				} else if (!function.toLowerCase().contains("x")) {
+					f_x = new FunctionX(function);
+					result.setValue(f_x.getF_xo(0));
+
+				} else {
+					throw new CalculatorException("function is not well defined");
+				}
+
+			} catch (final CalculatorException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+
+		return result;
+
+	}
+	
+	
 	/**
 	 * PointToValue.
 	 *
