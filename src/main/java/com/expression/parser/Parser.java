@@ -20,7 +20,7 @@ public class Parser {
 	/**
 	 * Eval
 	 *
-	 * This a parser eval. The real parser of a function is within the Fuction
+	 * This is a parser eval. The real parser of a function is within the Fuction
 	 *
 	 * FunctionX: functions with one var. Example 1+2*x --> it is more optimized
 	 *
