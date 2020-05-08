@@ -92,8 +92,9 @@ The last version supports expressions with complex numbers and multiple vars. He
 This version is compiled for Java 1.6
 
 If you are interested in maths, you can visit my java numerical library in my github repository which uses java.math.expression.parser to evaluate functions.
-        
 
-Enjoy it!!
+## Professional Services
+If you are interested in logical parsers or any task related to parsers, you can consult my professional services page https://github.com/sbesada/professional.services        
 
-PD: If you think that my work deserves a donation, you can do it: https://sbesada.github.io/
+## Donation
+If you think that my work deserves a donation, you can do it: https://sbesada.github.io/
