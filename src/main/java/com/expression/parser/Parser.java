@@ -145,8 +145,7 @@ public class Parser {
 		if ((function != null) && !function.equals("")) {
 			try {
 
-				if ((function.toLowerCase().contains("j") || function.toLowerCase().contains("i"))
-						&& !function.toLowerCase().contains("x")) {
+				if ((function.toLowerCase().contains("j")) && !function.toLowerCase().contains("x")) {
 
 					result = eval(function, new Point("x", new Complex(1, 0)));
 				} else if (!function.toLowerCase().contains("x")) {
