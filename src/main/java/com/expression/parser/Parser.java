@@ -18,18 +18,74 @@ import com.expression.parser.util.Point;
 public class Parser {
 
 	/**
+	 * Simple eval.
+	 *
+	 * function(fx) = 1 +2+ cos(0.5)
+	 *
+	 * @param function the function
+	 * @return the double
+	 */
+	public static double SimpleEval(final String function) {
+
+		double result = 0;
+		FunctionX f_x = null;
+
+		if ((function != null) && !function.isEmpty()) {
+			f_x = new FunctionX(function);
+			try {
+				result = f_x.getF_xo(0);
+			} catch (final CalculatorException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+
+		return result;
+
+	}
+
+	/**
+	 * Eval.
+	 *
+	 * fx = 1 +2+ cos(0.5) --> real functions or fx = 1+j +cos(0.5) --> complex functions
+	 *
+	 * @param function the function
+	 * @return the parser result
+	 */
+	public static ParserResult eval(final String function) {
+
+		ParserResult result = new ParserResult();
+		FunctionX f_x = null;
+
+		if ((function != null) && !function.isEmpty()) {
+			try {
+
+				if ((function.toLowerCase().contains("j")) && !function.toLowerCase().contains("x")) {
+
+					result = eval(function, new Point("x", new Complex(1, 0)));
+				} else if (!function.toLowerCase().contains("x")) {
+					f_x = new FunctionX(function);
+					result.setValue(f_x.getF_xo(0));
+
+				} else {
+					throw new CalculatorException("function is not well defined");
+				}
+
+			} catch (final CalculatorException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+
+		return result;
+
+	}
+
+	/**
 	 * Eval
 	 *
-	 * This is a parser eval. The real parser of a function is within the Fuction
+	 * fx = 1 + 2*x +y ; x = 2, y = 1+j --> real functions or complex functions with real or complex vars
 	 *
-	 * FunctionX: functions with one var. Example 1+2*x --> it is more optimized
-	 *
-	 * FunctionXs: functions with several vars. Example: 1+2*x+3*y...
-	 *
-	 * ComplexFunction: Complex functions with several vars: one var or n vars. Example: 1+x+y +j
-	 *
-	 * @param function the function: 1+2*x+j...
-	 * @param values the values x=10, y=20
 	 *
 	 * @return the parser result: complex or real value
 	 */
@@ -96,17 +152,14 @@ public class Parser {
 	/**
 	 * Eval.
 	 *
-	 * @param function the function
-	 * @param vars the vars
-	 * @param values the values
-	 * @return the double
+	 * Simple Eval for real functions with real vars fx = 1 + 2*x+y; x = 2 and y= 5
 	 */
 	public static double eval(final String function, final String[] vars, final Double[] values) {
 
 		double result = 0;
 		FunctionX f_x = null;
 		FunctionXs f_xs = null;
-		if ((function != null) && !function.equals("")) {
+		if ((function != null) && !function.isEmpty()) {
 			try {
 				if ((((vars == null) || (vars.length < 1)) && (values == null)) || (values.length < 1)) {
 					f_x = new FunctionX(function);
@@ -119,41 +172,6 @@ public class Parser {
 					final List<Double> valuesList = Arrays.asList(values);
 					final List<String> varsList = Arrays.asList(vars);
 					result = f_xs.getValue(valuesList, varsList);
-				}
-
-			} catch (final CalculatorException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		}
-
-		return result;
-
-	}
-
-	/**
-	 * Eval.
-	 *
-	 * @param function the function
-	 * @return the parser result
-	 */
-	public static ParserResult eval(final String function) {
-
-		ParserResult result = new ParserResult();
-		FunctionX f_x = null;
-
-		if ((function != null) && !function.equals("")) {
-			try {
-
-				if ((function.toLowerCase().contains("j")) && !function.toLowerCase().contains("x")) {
-
-					result = eval(function, new Point("x", new Complex(1, 0)));
-				} else if (!function.toLowerCase().contains("x")) {
-					f_x = new FunctionX(function);
-					result.setValue(f_x.getF_xo(0));
-
-				} else {
-					throw new CalculatorException("function is not well defined");
 				}
 
 			} catch (final CalculatorException e) {

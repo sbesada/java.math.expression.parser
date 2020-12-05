@@ -6,10 +6,10 @@ import com.expression.parser.function.Complex;
 import com.expression.parser.util.ParserResult;
 import com.expression.parser.util.Point;
 
-public class Test_Complex {
+public class ComplexTest {
 
 	@Test
-	public void Test_one() {
+	public void TestOne() {
 
 		// TODO Auto-generated method stub
 
@@ -122,7 +122,7 @@ public class Test_Complex {
 	}
 
 	@Test
-	public void Test_two() {
+	public void TestTwo() {
 
 		final Point xo = new Point("x", new Complex(1, 2));
 
@@ -156,7 +156,7 @@ public class Test_Complex {
 	}
 
 	@Test
-	public void Test_three() {
+	public void TestThree() {
 
 		String f_x = "1+j +x";
 		final Point xo = new Point("x", "2 +j");

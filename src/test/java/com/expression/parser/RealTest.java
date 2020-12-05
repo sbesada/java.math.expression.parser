@@ -7,10 +7,10 @@ import org.junit.Test;
 import com.expression.parser.util.ParserResult;
 import com.expression.parser.util.Point;
 
-public class Test_Real {
+public class RealTest {
 
 	@Test
-	public void Test_one() {
+	public void TestOne() {
 
 		String f_x = " (2)-(5)";
 
@@ -63,7 +63,7 @@ public class Test_Real {
 	}
 
 	@Test
-	public void Test_two() {
+	public void TestTwo() {
 
 		String f_x = " (2)-(5)";
 
@@ -97,7 +97,7 @@ public class Test_Real {
 	}
 
 	@Test
-	public void Test_three() {
+	public void TestThree() {
 
 		String f_x = "+3 +5*5*(+1)";
 
@@ -126,7 +126,7 @@ public class Test_Real {
 	}
 
 	@Test
-	public void Test_four() {
+	public void TestFour() {
 
 		String f_xs = "x+5*y+(3 -y)";
 		final Point xo = new Point("x", "1+1");
