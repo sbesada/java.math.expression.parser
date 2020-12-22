@@ -25,7 +25,7 @@ public class Parser {
 	 * @param function the function
 	 * @return the double
 	 */
-	public static double SimpleEval(final String function) {
+	public static double simpleEval(final String function) {
 
 		double result = 0;
 		FunctionX f_x = null;

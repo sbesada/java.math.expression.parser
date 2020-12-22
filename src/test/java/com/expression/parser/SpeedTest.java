@@ -8,7 +8,7 @@ public class SpeedTest {
 	public void testOne() {
 
 		final long time1 = System.currentTimeMillis();
-		Parser.SimpleEval(
+		Parser.simpleEval(
 				"6.5*7.8^2.3 + (3.5^3+7/2)^3 -(5*4/(2-3))*4 + 6.5*7.8^2.3 + (3.5^3+7/2)^3 -(5*4/(2-3))*4 + 6.5*7.8^2.3 + (3.5^3+7/2)^3 -(5*4/(2-3))*4 + 6.5*7.8^2.3 + (3.5^3+7/2)^3 -(5*4/(2-3))*4");
 		final long time2 = System.currentTimeMillis();
 		System.out.println("time test one:" + (time2 - time1));
@@ -21,7 +21,7 @@ public class SpeedTest {
 		final long time1 = System.currentTimeMillis();
 
 		for (int i = 0; i < 100000; i++) {
-			Parser.SimpleEval(
+			Parser.simpleEval(
 					"6.5*7.8^2.3 + (3.5^3+7/2)^3 -(5*4/(2-3))*4 + 6.5*7.8^2.3 + (3.5^3+7/2)^3 -(5*4/(2-3))*4 + 6.5*7.8^2.3 + (3.5^3+7/2)^3 -(5*4/(2-3))*4 + 6.5*7.8^2.3 + (3.5^3+7/2)^3 -(5*4/(2-3))*4");
 		}
 
@@ -34,7 +34,7 @@ public class SpeedTest {
 	public void testThree() {
 
 		final long time1 = System.currentTimeMillis();
-		Parser.SimpleEval("6.5*7.8^2.3 + (3.5^3+7/2)^3 -(5*4/(2-3))*4");
+		Parser.simpleEval("6.5*7.8^2.3 + (3.5^3+7/2)^3 -(5*4/(2-3))*4");
 		final long time2 = System.currentTimeMillis();
 		System.out.println("time test three:" + (time2 - time1));
 
