@@ -47,7 +47,7 @@ This algorithm is faster than JEP math expresion parser!!! If you compare java.m
 
 ### Real numbers
 
-        Parser.SimpleEval("6.5*7.8^2.3 + (3.5^3+7/2)^3 -(5*4/(2-3))*4"); --> for real functions
+        Parser.simpleEval("6.5*7.8^2.3 + (3.5^3+7/2)^3 -(5*4/(2-3))*4"); --> for real functions
 
         String f_x = "+3 +5*5*(+1)";
 
@@ -64,7 +64,7 @@ This algorithm is faster than JEP math expresion parser!!! If you compare java.m
         final Point zo = new Point("z", new Double(1));
         String f_xs = " 2*(-(((z*3)*sqrt(x^(2)))+3))";        
         
-        Parser.Eval(f_xs, xo, zo); --> multiple vars
+        Parser.eval(f_xs, xo, zo); --> multiple vars
         
         String f_xs = "x+5*y+(3 -y)";
         final Point xo = new Point("x", "1+1");
@@ -90,7 +90,7 @@ This algorithm is faster than JEP math expresion parser!!! If you compare java.m
  
        These are the results for the version 3.0 (master). You can check the speedTests in the project
   
-	   Parser.SimpleEval("6.5*7.8^2.3 + (3.5^3+7/2)^3 -(5*4/(2-3))*4 + 6.5*7.8^2.3 + (3.5^3+7/2)^3 -(5*4/(2-3))*4
+	   Parser.simpleEval("6.5*7.8^2.3 + (3.5^3+7/2)^3 -(5*4/(2-3))*4 + 6.5*7.8^2.3 + (3.5^3+7/2)^3 -(5*4/(2-3))*4
 	   + 6.5*7.8^2.3 + (3.5^3+7/2)^3 -(5*4/(2-3))*4 + 6.5*7.8^2.3 + (3.5^3+7/2)^3 -(5*4/(2-3))*4");
 
        CPU: i7-6500U
