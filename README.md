@@ -97,7 +97,7 @@ This algorithm is faster than JEP math expresion parser!!! If you compare java.m
        
        test 1: one execution: 4ms
        test 2: 100000 executions : 2100 ms --> mean time 0.021 ms per execution 
-       test 3: million executions: 16500 ms --> mean time 0.0165 ms per execution
+       test 3: one million executions: 16500 ms --> mean time 0.0165 ms per execution
 
 
 This version is compiled for Java 1.6
