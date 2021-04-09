@@ -6,7 +6,6 @@ import java.util.List;
 import com.expression.parser.ParserManager;
 import com.expression.parser.exception.CalculatorException;
 
-// TODO: Auto-generated Javadoc
 /**
  * The Class ComplexFunction.
  */
@@ -90,7 +89,7 @@ public class ComplexFunction {
 			if (character >= '0' && character <= '9') {
 
 				hasNumber = true;
-				number = number + character;
+				number += character;
 				if (i == (f.length() - 1)) {
 					value = new Complex(new Double(number), 0);
 					number = "";
@@ -103,28 +102,28 @@ public class ComplexFunction {
 					final Double numb = new Double(number);
 					final String new_f = f.substring(i + 1, f.length());
 					value = Complex.add(new Complex(numb, 0), eval(new_f, values, variables));
-					i = i + new_f.length();
+					i += new_f.length();
 					hasNumber = false;
 					number = "";
 				} else if (hasNumber && isImaginary) {
 					final Double numb = new Double(number);
 					final String new_f = f.substring(i + 1, f.length());
 					value = Complex.add(new Complex(0, numb), eval(new_f, values, variables));
-					i = i + new_f.length();
+					i += new_f.length();
 					hasNumber = false;
 					isImaginary = false;
 					number = "";
 				} else if (hasFunction) {
 					final String new_f = f.substring(i + 1, f.length());
 					value = Complex.add(eval(function, values, variables), eval(new_f, values, variables));
-					i = i + new_f.length();
+					i += new_f.length();
 					hasFunction = false;
 					function = "";
 
 				} else {
 					final String new_f = f.substring(i + 1, f.length());
 					value = Complex.add(value, eval(new_f, values, variables));
-					i = i + new_f.length();
+					i += new_f.length();
 				}
 
 			} else if (character == '*') {
@@ -133,7 +132,7 @@ public class ComplexFunction {
 					final Double numb = new Double(number);
 					final String new_f = nextFunction(f.substring(i + 1, f.length()));
 					value = Complex.mul(new Complex(numb, 0), eval(new_f, values, variables));
-					i = i + new_f.length();
+					i += new_f.length();
 					hasNumber = false;
 					number = "";
 
@@ -141,20 +140,20 @@ public class ComplexFunction {
 					final Double numb = new Double(number);
 					final String new_f = nextFunction(f.substring(i + 1, f.length()));
 					value = Complex.mul(new Complex(0, numb), eval(new_f, values, variables));
-					i = i + new_f.length();
+					i += new_f.length();
 					hasNumber = false;
 					isImaginary = false;
 					number = "";
 				} else if (hasFunction) {
 					final String new_f = nextFunction(f.substring(i + 1, f.length()));
 					value = Complex.mul(eval(function, values, variables), eval(new_f, values, variables));
-					i = i + new_f.length();
+					i += new_f.length();
 					hasFunction = false;
 					function = "";
 				} else {
 					final String new_f = nextFunction(f.substring(i + 1, f.length()));
 					value = Complex.mul(value, eval(new_f, values, variables));
-					i = i + new_f.length();
+					i += new_f.length();
 				}
 
 			} else if (character == '-') {
@@ -163,14 +162,14 @@ public class ComplexFunction {
 					final Double numb = new Double(number);
 					final String new_f = nextMinusFunction(f.substring(i + 1, f.length()));
 					value = Complex.sub(new Complex(numb, 0), eval(new_f, values, variables));
-					i = i + new_f.length();
+					i += new_f.length();
 					hasNumber = false;
 					number = "";
 				} else if (hasNumber && isImaginary) {
 					final Double numb = new Double(number);
 					final String new_f = nextMinusFunction(f.substring(i + 1, f.length()));
 					value = Complex.sub(new Complex(0, numb), eval(new_f, values, variables));
-					i = i + new_f.length();
+					i += new_f.length();
 					hasNumber = false;
 					isImaginary = false;
 					number = "";
@@ -178,14 +177,14 @@ public class ComplexFunction {
 				} else if (hasFunction) {
 					final String new_f = nextMinusFunction(f.substring(i + 1, f.length()));
 					value = Complex.sub(eval(function, values, variables), eval(new_f, values, variables));
-					i = i + new_f.length();
+					i += new_f.length();
 					hasFunction = false;
 					function = "";
 
 				} else {
 					final String new_f = nextMinusFunction(f.substring(i + 1, f.length()));
 					value = Complex.sub(value, eval(new_f, values, variables));
-					i = i + new_f.length();
+					i += new_f.length();
 				}
 
 			} else if (character == '/') {
@@ -194,14 +193,14 @@ public class ComplexFunction {
 					final Double numb = new Double(number);
 					final String new_f = nextFunction(f.substring(i + 1, f.length()));
 					value = Complex.div(new Complex(numb, 0), eval(new_f, values, variables));
-					i = i + new_f.length();
+					i += new_f.length();
 					hasNumber = false;
 					number = "";
 				} else if (hasNumber && isImaginary) {
 					final Double numb = new Double(number);
 					final String new_f = nextFunction(f.substring(i + 1, f.length()));
 					value = Complex.div(new Complex(0, numb), eval(new_f, values, variables));
-					i = i + new_f.length();
+					i += new_f.length();
 					hasNumber = false;
 					isImaginary = false;
 					number = "";
@@ -209,14 +208,14 @@ public class ComplexFunction {
 				} else if (hasFunction) {
 					final String new_f = nextFunction(f.substring(i + 1, f.length()));
 					value = Complex.div(eval(function, values, variables), eval(new_f, values, variables));
-					i = i + new_f.length();
+					i += new_f.length();
 					hasFunction = false;
 					function = "";
 
 				} else {
 					final String new_f = nextFunction(f.substring(i + 1, f.length()));
 					value = Complex.div(value, eval(new_f, values, variables));
-					i = i + new_f.length();
+					i += new_f.length();
 				}
 
 			} else if (character == '^') {
@@ -225,14 +224,14 @@ public class ComplexFunction {
 					final Double numb = new Double(number);
 					final String new_f = nextFunction(f.substring(i + 1, f.length()));
 					value = Complex.pow(eval(new_f, values, variables), numb);
-					i = i + new_f.length();
+					i += new_f.length();
 					hasNumber = false;
 					number = "";
 				} else if (hasNumber && isImaginary) {
 					final Double numb = new Double(number);
 					final String new_f = nextFunction(f.substring(i + 1, f.length()));
 					value = Complex.pow(eval(new_f, values, variables), new Complex(0, numb));
-					i = i + new_f.length();
+					i += new_f.length();
 					hasNumber = false;
 					isImaginary = false;
 					number = "";
@@ -240,14 +239,14 @@ public class ComplexFunction {
 				} else if (hasFunction) {
 					final String new_f = nextFunction(f.substring(i + 1, f.length()));
 					value = Complex.pow(eval(function, values, variables), eval(new_f, values, variables));
-					i = i + new_f.length();
+					i += new_f.length();
 					hasFunction = false;
 					function = "";
 
 				} else {
 					final String new_f = nextFunction(f.substring(i + 1, f.length()));
 					value = Complex.pow(value, eval(new_f, values, variables));
-					i = i + new_f.length();
+					i += new_f.length();
 				}
 
 			} else if (character == '.') {
@@ -255,7 +254,7 @@ public class ComplexFunction {
 					throw new CalculatorException("The function is not well-formed");
 				}
 				if (hasNumber && (number.length() > 0)) {
-					number = number + character;
+					number += character;
 				}
 
 			} else if (character == '(') {
@@ -265,39 +264,39 @@ public class ComplexFunction {
 
 				final String new_f = f.substring(i + 1, nextBracket(f));
 				if (hasFunction) {
-					if (function.equals(Constants.SIN)) {
+					if (Constants.SIN.equals(function)) {
 						value = eval(new_f, values, variables).sin();
 
-					} else if (function.equals(Constants.COS)) {
+					} else if (Constants.COS.equals(function)) {
 						value = eval(new_f, values, variables).cos();
 
-					} else if (function.equals(Constants.TAN)) {
+					} else if (Constants.TAN.equals(function)) {
 						value = eval(new_f, values, variables).tan();
 
-					} else if (function.equals(Constants.SINH)) {
+					} else if (Constants.SINH.equals(function)) {
 						value = eval(new_f, values, variables).sinh();
 
-					} else if (function.equals(Constants.COSH)) {
+					} else if (Constants.COSH.equals(function)) {
 						value = eval(new_f, values, variables).cosh();
 
-					} else if (function.equals(Constants.TANH)) {
+					} else if (Constants.TANH.equals(function)) {
 						value = eval(new_f, values, variables).tanh();
 
-					} else if (function.equals(Constants.ASIN)) {
+					} else if (Constants.ASIN.equals(function)) {
 						value = eval(new_f, values, variables).asin();
 
-					} else if (function.equals(Constants.ACOS)) {
+					} else if (Constants.ACOS.equals(function)) {
 						value = eval(new_f, values, variables).acos();
 
-					} else if (function.equals(Constants.ATAN)) {
+					} else if (Constants.ATAN.equals(function)) {
 						value = eval(new_f, values, variables).atan();
-					} else if (function.equals(Constants.LN)) {
+					} else if (Constants.LN.equals(function)) {
 						value = eval(new_f, values, variables).log();
-					} else if (function.equals(Constants.LOG)) {
+					} else if (Constants.LOG.equals(function)) {
 						value = eval(new_f, values, variables).log10();
-					} else if (function.equals(Constants.SQRT)) {
+					} else if (Constants.SQRT.equals(function)) {
 						value = eval(new_f, values, variables).sqrt();
-					} else if (function.equals(Constants.CBRT)) {
+					} else if (Constants.CBRT.equals(function)) {
 						value = Complex.cbrt(eval(new_f, values, variables));
 					} else {
 						throw new CalculatorException("The function is not well-formed");
@@ -309,7 +308,7 @@ public class ComplexFunction {
 				} else {
 					value = eval(new_f, values, variables);
 				}
-				i = i + new_f.length() + 1;
+				i += new_f.length() + 1;
 
 			} else if (character == ')') {
 				throw new CalculatorException(" '(' is not finished ");
@@ -334,10 +333,10 @@ public class ComplexFunction {
 
 					if (i == (f.length() - 1)) {
 
-						if (function.equals(Constants.E)) {
-							value = new Complex(Math.E, 0);
-						} else if (function.equals(Constants.PI)) {
-							value = new Complex(Math.PI, 0);
+						if (Constants.E.equals(function)) {
+							value = new Complex(StrictMath.E, 0);
+						} else if (Constants.PI.equals(function)) {
+							value = new Complex(StrictMath.PI, 0);
 						} else {
 							if (function.length() == 1) {
 								final int n = variables.indexOf(function);
@@ -370,9 +369,9 @@ public class ComplexFunction {
 					if (i == (f.length() - 1)) {
 
 						if (function.equals(Constants.E)) {
-							value = new Complex(Math.E, 0);
+							value = new Complex(StrictMath.E, 0);
 						} else if (function.equals(Constants.PI)) {
-							value = new Complex(Math.PI, 0);
+							value = new Complex(StrictMath.PI, 0);
 						} else {
 							if (function.length() == 1) {
 								final int n = variables.indexOf(function);
@@ -396,11 +395,11 @@ public class ComplexFunction {
 
 				if (i == (f.length() - 1)) {
 
-					if (function.equals(Constants.E)) {
-						value = new Complex(Math.E, 0);
+					if (Constants.E.equals(function)) {
+						value = new Complex(StrictMath.E, 0);
 
-					} else if (function.equals(Constants.PI)) {
-						value = new Complex(Math.PI, 0);
+					} else if (Constants.PI.equals(function)) {
+						value = new Complex(StrictMath.PI, 0);
 					} else {
 						if (function.length() == 1) {
 							final int n = variables.indexOf(function);
@@ -438,20 +437,18 @@ public class ComplexFunction {
 
 			if (character == '+' || character == '*' || character == '-' || character == '/') {
 				i = f.length();
-			} else if (character == '^') {
-				result = result + character;
-			} else if (character == '.') {
-				result = result + character;
+			} else if (isValidNumericAndCharacter(character)) {
+				result += character;
+			} else if (character == '^' || character == '.') {
+				result += character;
 			} else if (character == '(') {
 				final String new_f = f.substring(i, nextBracket(f) + 1);
-				result = result + new_f;
+				result += new_f;
 				i = (i + new_f.length()) - 1;
 			} else if (character == ')') {
 				throw new CalculatorException(" '(' is not finished ");
 			} else if (character == ' ') {
-				result = result + character;
-			} else if (isValidNumericAndCharacter(character)) {
-				result = result + character;
+				result += character;
 			} else {
 				throw new CalculatorException("Invalid character:" + character);
 			}
@@ -473,28 +470,22 @@ public class ComplexFunction {
 		for (int i = 0; i < f.length(); i++) {
 			final char character = f.charAt(i);
 
-			if (character == '+') {
+			if (character == '+' || character == '-') {
 				i = f.length();
-			} else if (character == '*') {
-				result = result + character;
-			} else if (character == '-') {
-				i = f.length();
-			} else if (character == '/') {
-				result = result + character;
-			} else if (character == '^') {
-				result = result + character;
-			} else if (character == '.') {
-				result = result + character;
+			} else if (character == '*' || character == '/') {
+				result += character;
+			} else if (isValidNumericAndCharacter(character)) {
+				result += character;
+			} else if (character == '^' || character == '.') {
+				result += character;
 			} else if (character == '(') {
 				final String new_f = f.substring(i, nextBracket(f) + 1);
-				result = result + new_f;
+				result += new_f;
 				i = (i + new_f.length()) - 1;
 			} else if (character == ')') {
 				throw new CalculatorException(" '(' is not finished ");
 			} else if (character == ' ') {
-				result = result + character;
-			} else if (isValidNumericAndCharacter(character)) {
-				result = result + character;
+				result += character;
 			} else {
 				throw new CalculatorException("Invalid character:" + character);
 			}

@@ -86,7 +86,7 @@ public class FunctionXs {
 			if (character >= '0' && character <= '9') {
 
 				hasNumber = true;
-				number = number + character;
+				number += character;
 				if (i == (f.length() - 1)) {
 					value = new Double(number).doubleValue();
 					number = "";
@@ -99,20 +99,20 @@ public class FunctionXs {
 					final Double numb = new Double(number);
 					final String new_f = f.substring(i + 1, f.length());
 					value = numb + eval(new_f, values, variables);
-					i = i + new_f.length();
+					i += new_f.length();
 					hasNumber = false;
 					number = "";
 				} else if (hasFunction) {
 					final String new_f = f.substring(i + 1, f.length());
 					value = eval(function, values, variables) + eval(new_f, values, variables);
-					i = i + new_f.length();
+					i += new_f.length();
 					hasFunction = false;
 					function = "";
 
 				} else {
 					final String new_f = f.substring(i + 1, f.length());
 					value = value + eval(new_f, values, variables);
-					i = i + new_f.length();
+					i += new_f.length();
 				}
 
 			} else if (character == '*') {
@@ -121,19 +121,19 @@ public class FunctionXs {
 					final Double numb = new Double(number);
 					final String new_f = nextFunction(f.substring(i + 1, f.length()));
 					value = numb * eval(new_f, values, variables);
-					i = i + new_f.length();
+					i += new_f.length();
 					hasNumber = false;
 					number = "";
 				} else if (hasFunction) {
 					final String new_f = nextFunction(f.substring(i + 1, f.length()));
 					value = eval(function, values, variables) * eval(new_f, values, variables);
-					i = i + new_f.length();
+					i += new_f.length();
 					hasFunction = false;
 					function = "";
 				} else {
 					final String new_f = nextFunction(f.substring(i + 1, f.length()));
 					value = value * eval(new_f, values, variables);
-					i = i + new_f.length();
+					i += new_f.length();
 				}
 
 			} else if (character == '-') {
@@ -142,20 +142,20 @@ public class FunctionXs {
 					final Double numb = new Double(number);
 					final String new_f = nextMinusFunction(f.substring(i + 1, f.length()));
 					value = numb - eval(new_f, values, variables);
-					i = i + new_f.length();
+					i += new_f.length();
 					hasNumber = false;
 					number = "";
 				} else if (hasFunction) {
 					final String new_f = nextMinusFunction(f.substring(i + 1, f.length()));
 					value = eval(function, values, variables) - eval(new_f, values, variables);
-					i = i + new_f.length();
+					i += new_f.length();
 					hasFunction = false;
 					function = "";
 
 				} else {
 					final String new_f = nextMinusFunction(f.substring(i + 1, f.length()));
 					value = value - eval(new_f, values, variables);
-					i = i + new_f.length();
+					i += new_f.length();
 				}
 
 			} else if (character == '/') {
@@ -164,20 +164,20 @@ public class FunctionXs {
 					final Double numb = new Double(number);
 					final String new_f = nextFunction(f.substring(i + 1, f.length()));
 					value = numb / eval(new_f, values, variables);
-					i = i + new_f.length();
+					i += new_f.length();
 					hasNumber = false;
 					number = "";
 				} else if (hasFunction) {
 					final String new_f = nextFunction(f.substring(i + 1, f.length()));
 					value = eval(function, values, variables) / eval(new_f, values, variables);
-					i = i + new_f.length();
+					i += new_f.length();
 					hasFunction = false;
 					function = "";
 
 				} else {
 					final String new_f = nextFunction(f.substring(i + 1, f.length()));
 					value = value / eval(new_f, values, variables);
-					i = i + new_f.length();
+					i += new_f.length();
 				}
 
 			} else if (character == '^') {
@@ -185,21 +185,21 @@ public class FunctionXs {
 				if (hasNumber) {
 					final Double numb = new Double(number);
 					final String new_f = nextFunction(f.substring(i + 1, f.length()));
-					value = Math.pow(numb.doubleValue(), eval(new_f, values, variables));
-					i = i + new_f.length();
+					value = StrictMath.pow(numb.doubleValue(), eval(new_f, values, variables));
+					i += new_f.length();
 					hasNumber = false;
 					number = "";
 				} else if (hasFunction) {
 					final String new_f = nextFunction(f.substring(i + 1, f.length()));
-					value = Math.pow(eval(function, values, variables), eval(new_f, values, variables));
-					i = i + new_f.length();
+					value = StrictMath.pow(eval(function, values, variables), eval(new_f, values, variables));
+					i += new_f.length();
 					hasFunction = false;
 					function = "";
 
 				} else {
 					final String new_f = nextFunction(f.substring(i + 1, f.length()));
-					value = Math.pow(value, eval(new_f, values, variables));
-					i = i + new_f.length();
+					value = StrictMath.pow(value, eval(new_f, values, variables));
+					i += new_f.length();
 				}
 
 			} else if (character == '.') {
@@ -207,7 +207,7 @@ public class FunctionXs {
 					throw new CalculatorException("The function is not well-formed");
 				}
 				if (hasNumber && (number.length() > 0)) {
-					number = number + character;
+					number += character;
 				}
 
 			} else if (character == '(') {
@@ -217,61 +217,61 @@ public class FunctionXs {
 
 				final String new_f = f.substring(i + 1, nextBracket(f));
 				if (hasFunction) {
-					if (function.equals(Constants.SIN)) {
+					if (Constants.SIN.equals(function)) {
 						if (degree) {
-							value = Math.sin(Math.toRadians(eval(new_f, values, variables)));
+							value = StrictMath.sin(StrictMath.toRadians(eval(new_f, values, variables)));
 						} else {
-							value = Math.sin(eval(new_f, values, variables));
+							value = StrictMath.sin(eval(new_f, values, variables));
 						}
 
-					} else if (function.equals(Constants.COS)) {
+					} else if (Constants.COS.equals(function)) {
 						if (degree) {
-							value = Math.cos(Math.toRadians(eval(new_f, values, variables)));
+							value = StrictMath.cos(StrictMath.toRadians(eval(new_f, values, variables)));
 						} else {
-							value = Math.cos(eval(new_f, values, variables));
+							value = StrictMath.cos(eval(new_f, values, variables));
 						}
-					} else if (function.equals(Constants.TAN)) {
+					} else if (Constants.TAN.equals(function)) {
 						if (degree) {
-							value = Math.tan(Math.toRadians(eval(new_f, values, variables)));
+							value = StrictMath.tan(StrictMath.toRadians(eval(new_f, values, variables)));
 						} else {
-							value = Math.tan(eval(new_f, values, variables));
+							value = StrictMath.tan(eval(new_f, values, variables));
 						}
 
-					} else if (function.equals(Constants.SINH)) {
-						value = Math.sinh(eval(new_f, values, variables));
+					} else if (Constants.SINH.equals(function)) {
+						value = StrictMath.sinh(eval(new_f, values, variables));
 
-					} else if (function.equals(Constants.COSH)) {
-						value = Math.cosh(eval(new_f, values, variables));
+					} else if (Constants.COSH.equals(function)) {
+						value = StrictMath.cosh(eval(new_f, values, variables));
 
-					} else if (function.equals(Constants.TANH)) {
-						value = Math.tanh(eval(new_f, values, variables));
+					} else if (Constants.TANH.equals(function)) {
+						value = StrictMath.tanh(eval(new_f, values, variables));
 
-					} else if (function.equals(Constants.ASIN)) {
+					} else if (Constants.ASIN.equals(function)) {
 						if (degree) {
-							value = Math.asin(eval(new_f, values, variables)) * (180 / Math.PI);
+							value = StrictMath.asin(eval(new_f, values, variables)) * (180 / StrictMath.PI);
 						} else {
-							value = Math.asin(eval(new_f, values, variables));
+							value = StrictMath.asin(eval(new_f, values, variables));
 						}
-					} else if (function.equals(Constants.ACOS)) {
+					} else if (Constants.ACOS.equals(function)) {
 						if (degree) {
-							value = Math.acos(eval(new_f, values, variables)) * (180 / Math.PI);
+							value = StrictMath.acos(eval(new_f, values, variables)) * (180 / StrictMath.PI);
 						} else {
-							value = Math.acos(eval(new_f, values, variables));
+							value = StrictMath.acos(eval(new_f, values, variables));
 						}
-					} else if (function.equals(Constants.ATAN)) {
+					} else if (Constants.ATAN.equals(function)) {
 						if (degree) {
-							value = Math.atan(eval(new_f, values, variables)) * (180 / Math.PI);
+							value = StrictMath.atan(eval(new_f, values, variables)) * (180 / StrictMath.PI);
 						} else {
-							value = Math.atan(eval(new_f, values, variables));
+							value = StrictMath.atan(eval(new_f, values, variables));
 						}
-					} else if (function.equals(Constants.LN)) {
-						value = Math.log(eval(new_f, values, variables));
-					} else if (function.equals(Constants.LOG)) {
-						value = Math.log10(eval(new_f, values, variables));
-					} else if (function.equals(Constants.SQRT)) {
-						value = Math.sqrt(eval(new_f, values, variables));
-					} else if (function.equals(Constants.CBRT)) {
-						value = Math.cbrt(eval(new_f, values, variables));
+					} else if (Constants.LN.equals(function)) {
+						value = StrictMath.log(eval(new_f, values, variables));
+					} else if (Constants.LOG.equals(function)) {
+						value = StrictMath.log10(eval(new_f, values, variables));
+					} else if (Constants.SQRT.equals(function)) {
+						value = StrictMath.sqrt(eval(new_f, values, variables));
+					} else if (Constants.CBRT.equals(function)) {
+						value = StrictMath.cbrt(eval(new_f, values, variables));
 					} else {
 						throw new CalculatorException("The function is not well-formed");
 					}
@@ -282,12 +282,10 @@ public class FunctionXs {
 				} else {
 					value = eval(new_f, values, variables);
 				}
-				i = i + new_f.length() + 1;
+				i += new_f.length() + 1;
 
 			} else if (character == ')') {
 				throw new CalculatorException(" '(' is not finished ");
-
-			} else if (character == ' ') {
 
 			} else if (isValidCharacter(character)) {
 				function = function + character;
@@ -295,10 +293,10 @@ public class FunctionXs {
 
 				if (i == (f.length() - 1)) {
 
-					if (function.equals(Constants.E)) {
-						value = Math.E;
-					} else if (function.equals(Constants.PI)) {
-						value = Math.PI;
+					if (Constants.E.equals(function)) {
+						value = StrictMath.E;
+					} else if (Constants.PI.equals(function)) {
+						value = StrictMath.PI;
 					} else {
 						if (function.length() == 1) {
 							final int n = variables.indexOf(function);
@@ -314,6 +312,8 @@ public class FunctionXs {
 						}
 					}
 				}
+			} else if (character == ' ') {
+
 			} else {
 				throw new CalculatorException("Invalid character:" + character);
 			}
@@ -336,20 +336,18 @@ public class FunctionXs {
 
 			if (character == '+' || character == '*' || character == '-' || character == '/') {
 				i = f.length();
-			} else if (character == '^') {
-				result = result + character;
-			} else if (character == '.') {
-				result = result + character;
+			} else if (isValidNumericAndCharacter(character)) {
+				result += character;
+			} else if (character == '^' || character == '.') {
+				result += character;
 			} else if (character == '(') {
 				final String new_f = f.substring(i, nextBracket(f) + 1);
-				result = result + new_f;
+				result += new_f;
 				i = (i + new_f.length()) - 1;
 			} else if (character == ')') {
 				throw new CalculatorException(" '(' is not finished ");
 			} else if (character == ' ') {
-				result = result + character;
-			} else if (isValidNumericAndCharacter(character)) {
-				result = result + character;
+				result += character;
 			} else {
 				throw new CalculatorException("Invalid character:" + character);
 			}
@@ -364,35 +362,28 @@ public class FunctionXs {
 	 * @return the string
 	 * @throws CalculatorException the calculator exception
 	 */
-	private String nextMinusFunction(String f) throws CalculatorException {
+	private String nextMinusFunction(final String f) throws CalculatorException {
 		String result = "";
-		f = f.trim().toLowerCase();
 
 		for (int i = 0; i < f.length(); i++) {
 			final char character = f.charAt(i);
 
-			if (character == '+') {
+			if (character == '+' || character == '-') {
 				i = f.length();
-			} else if (character == '*') {
-				result = result + character;
-			} else if (character == '-') {
-				i = f.length();
-			} else if (character == '/') {
-				result = result + character;
-			} else if (character == '^') {
-				result = result + character;
-			} else if (character == '.') {
-				result = result + character;
+			} else if (character == '*' || character == '/') {
+				result += character;
+			} else if (isValidNumericAndCharacter(character)) {
+				result += character;
+			} else if (character == '^' || character == '.') {
+				result += character;
 			} else if (character == '(') {
 				final String new_f = f.substring(i, nextBracket(f) + 1);
-				result = result + new_f;
+				result += new_f;
 				i = (i + new_f.length()) - 1;
 			} else if (character == ')') {
 				throw new CalculatorException(" '(' is not finished ");
 			} else if (character == ' ') {
-				result = result + character;
-			} else if (isValidNumericAndCharacter(character)) {
-				result = result + character;
+				result += character;
 			} else {
 				throw new CalculatorException("Invalid character:" + character);
 			}
