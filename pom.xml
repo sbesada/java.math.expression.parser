@@ -4,7 +4,7 @@
 	<groupId>com.expression.parser</groupId>
 	<artifactId>com.expression.parser</artifactId>
 	<packaging>jar</packaging>
-	<version>3.2.0</version>
+	<version>3.3.0</version>
 	<name>com.expression.parser</name>
 	<description></description>
 	

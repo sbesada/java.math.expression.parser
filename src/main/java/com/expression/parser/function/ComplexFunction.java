@@ -435,11 +435,11 @@ public class ComplexFunction {
 		for (int i = 0; i < f.length(); i++) {
 			final char character = f.charAt(i);
 
-			if (character == '+' || character == '*' || character == '-' || character == '/') {
-				i = f.length();
-			} else if (isValidNumericAndCharacter(character)) {
+			if (isValidNumericAndCharacter(character)) {
 				result += character;
-			} else if (character == '^' || character == '.') {
+			} else if (character == '+' || character == '*' || character == '-' || character == '/') {
+				i = f.length();
+			} else if (character == '.' || character == '^') {
 				result += character;
 			} else if (character == '(') {
 				final String new_f = f.substring(i, nextBracket(f) + 1);
@@ -470,13 +470,11 @@ public class ComplexFunction {
 		for (int i = 0; i < f.length(); i++) {
 			final char character = f.charAt(i);
 
-			if (character == '+' || character == '-') {
+			if (isValidNumericAndCharacter(character)) {
+				result += character;
+			} else if (character == '+' || character == '-') {
 				i = f.length();
-			} else if (character == '*' || character == '/') {
-				result += character;
-			} else if (isValidNumericAndCharacter(character)) {
-				result += character;
-			} else if (character == '^' || character == '.') {
+			} else if (character == '*' || character == '/' || character == '.' || character == '^') {
 				result += character;
 			} else if (character == '(') {
 				final String new_f = f.substring(i, nextBracket(f) + 1);

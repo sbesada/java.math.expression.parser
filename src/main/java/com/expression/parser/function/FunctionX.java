@@ -314,11 +314,11 @@ public class FunctionX {
 		for (int i = 0; i < f_x.length(); i++) {
 			final char character = f_x.charAt(i);
 
-			if (character == '+' || character == '*' || character == '-' || character == '/') {
-				i = f_x.length();
-			} else if (isValidNumericAndCharacter(character)) {
+			if (isValidNumericAndCharacter(character)) {
 				result += character;
-			} else if (character == '^' || character == '.') {
+			} else if (character == '+' || character == '*' || character == '-' || character == '/') {
+				i = f_x.length();
+			} else if (character == '.' || character == '^') {
 				result += character;
 			} else if (character == '(') {
 				final String new_f_x = f_x.substring(i, nextBracket(f_x) + 1);
@@ -347,13 +347,11 @@ public class FunctionX {
 		for (int i = 0; i < f_x.length(); i++) {
 			final char character = f_x.charAt(i);
 
-			if (character == '+' || character == '-') {
+			if (isValidNumericAndCharacter(character)) {
+				result += character;
+			} else if (character == '+' || character == '-') {
 				i = f_x.length();
-			} else if (character == '*' || character == '/') {
-				result += character;
-			} else if (isValidNumericAndCharacter(character)) {
-				result += character;
-			} else if (character == '^' || character == '.') {
+			} else if (character == '*' || character == '/' || character == '.' || character == '^') {
 				result += character;
 			} else if (character == '(') {
 				final String new_f_x = f_x.substring(i, nextBracket(f_x) + 1);
