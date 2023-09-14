@@ -98,9 +98,9 @@ This algorithm is faster than JEP math expresion parser!!! If you compare java.m
        
        test 1: one execution: 3ms
        test 2: 100000 executions : 2100 ms --> mean time 0.021 ms per execution 
-                                   (with graalvm-jdk-17.0.8+9.1 the total time is 754ms) 
+                                   (with graalvm-jdk-17.0.8+9.1 the total time is 754ms --> 0.00754 per execution) 
        test 3: one million executions: 16500 ms --> mean time 0.0165 ms per execution 
-                                   (with graalvm-jdk-17.0.8+9.1 the total time is 7980ms) 
+                                   (with graalvm-jdk-17.0.8+9.1 the total time is 7980ms --> 0,00798 per execution) 
 
 
 This version is compiled for Java 1.6
